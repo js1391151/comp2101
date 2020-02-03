@@ -18,6 +18,7 @@ test -f ~/Pictures/pics.zip && unzip -d ~/Pictures -o -q ~/Pictures/pics.zip && 
 
 # Make a report on what we have in the Pictures directory
 test -d ~/Pictures && cat <<EOF
+Zip Files ======
 Found $(find ~/Pictures -type f|wc -l) files in the Pictures directory.
 The Pictures directory uses $(du -sh ~/Pictures|awk '{print $1}') space on the disk.
 EOF
@@ -32,6 +33,7 @@ test -f ~/Pictures/pics.tgz && tar -x -z -f ~/Pictures/pics.tgz -C ~/Pictures &&
 
 # Make a report on what we have in the Pictures directory
 test -d ~/Pictures && cat <<EOF
+tar files ======
 Found $(find ~/Pictures -type f|wc -l) files in the Pictures directory.
 The Pictures directory uses $(du -sh ~/Pictures|awk '{print $1}') space on the disk.
 EOF
