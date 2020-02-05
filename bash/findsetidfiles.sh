@@ -27,4 +27,4 @@ echo "============="
 find / -type f -executable -perm -2000 -ls 2>/dev/null | sort -k 3
 echo "10 largest files in the system:"
 echo "============="
-find /* -mount -type f -ls 2> /dev/null | sort -rnk7 | head -10 | awk '{printf "%10d MB\t%s\n" , ($7/1024)/1024,$NF}'
+find /* -mount -type f P 2> /dev/null | sort -rnk7 | head -10 | awk '{printf "%10d MB\t%s\n" , ($7/1024)/1024,$NF}'

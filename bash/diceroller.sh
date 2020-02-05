@@ -14,7 +14,3 @@ echo "
 Rolling normal dice 6 times:
 $((RANDOM % 6+1)), $((RANDOM % 6+1)), $((RANDOM % 6+1)), $((RANDOM % 6+1)), $((RANDOM % 6+1)), $((RANDOM % 6+1))
 "
-echo "
-Rolling a 20 sided dice once:
-$((RANDOM % 20+1))
-"
