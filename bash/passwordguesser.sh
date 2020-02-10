@@ -9,7 +9,40 @@
 # TASK 3: Improve it by giving them 5 tries to get it right before failing
 #           *** Do not use the exit command, and do not use a loop (e.g. while or for)
 
+echo "Guess Password:"
 myString="TestString"
 referenceString="password"
 
-[ $myString = $referenceString ] && echo "Correct!" || echo "Incorrect."
+
+
+read myString
+if
+ [ $myString = $referenceString ];then
+ echo "You guessed the password!"
+ else
+ echo "Please try again:"
+ read myString
+  if [ $myString = $referenceString ]; then
+   echo "You guessed the password!"
+   else
+    echo "Please try again"
+    read myString
+    if [ $myString = $referenceString ]; then
+     echo "you guessed the password"
+    else
+     echo "Please try again:"
+     read myString
+     if [ $myString = $referenceString ]; then
+      echo "you guessed the password"
+     else
+      echo "Please try again:"
+      read myString
+      if [ $myString = $referenceString ]; then
+       echo "you guessed the password"
+      else
+       echo "Thanx for giving a try"
+      fi
+    fi
+    fi
+  fi
+fi

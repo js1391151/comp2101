@@ -30,14 +30,26 @@
 # finding external information relies on curl being installed and relies on live internet connection
 # awk is used to extract only the data we want displayed from the commands which produce extra data
 # this command is ugly done this way, so generating the output data into variables is recommended to make the script more readable.
-# e.g. 
+# e.g.
 #   interface_name=$(ip a |awk '/: e/{gsub(/:/,"");print $2}')
 
-cat <<EOF
-Hostname        : $(hostname)
-LAN Address     : $(ip a s $(ip a |awk '/: e/{gsub(/:/,"");print $2}')|awk '/inet /{gsub(/\/.*/,"");print $2}')
-LAN Hostname    : $(getent hosts $(ip a s $(ip a |awk '/: e/{gsub(/:/,"");print $2}'))|awk '/inet /{gsub(/\/.*/,"");print $2}' | awk '{print $2}')
-External IP     : $(curl -s icanhazip.com)
-External Name   : $(getent hosts $(curl -s icanhazip.com) | awk '{print $2}')
-EOF
 
+Hostname=$(hostname)
+Test=$(ip a |awk '/: e/{gsub(/:/,"");print $2}')
+LANAddress=$(ip a s $Test|awk '/inet /{gsub(/\/.*/,"");print $2}')
+LANHostname=$(getent hosts $LANAddress | awk '{print $2}')
+ExternalIP=$(curl -s icanhazip.com)
+ExternalName=$(getent hosts $ExternalIP | awk '{print $2}')
+RouterAddress=$(ip route | grep 'default' | awk '{print $3}')
+RouterHostname=$(getent hosts $RouterAddress | awk '{print $2}')
+
+cat <<EOF
+Hostname           :  $Hostname
+LAN Address        :  $LANAddress
+LAN Hostname       :  $LANHostname
+External IP Address:  $ExternalIP
+External Name      :  $ExternalName
+Router IP Address  :  $RouterAddress
+Router Hostname    :  $RouterHostname
+
+EOF
