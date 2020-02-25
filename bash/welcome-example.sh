@@ -20,14 +20,34 @@
 Hostname=$(hostname)
 title="Overlord"
 myname=$(users)
-Date=$(date +%A)
-DDate=$(date +%X)
+Day=$(date +%A)
+Date=$(date +%X)
 
+if [ $Day = Monday ];
+  then title=Blasting
+elif [ $Day = Tuesday ];
+  then title=Trouble
+elif [ $Day = Wednessday ];
+  then title=wonderful
+elif [ $Day = Thursday ];
+  then title=Threatening
+elif [ $Day = Friday ];
+  then title=Fry-Day
+elif [ $Day = Saturday ];
+  then title=Set-your-Day
+elif [ $Day = Sunday ];
+  then title=Funday
+fi
+
+Var=$(cat <<EOF
+Welcome to planet $Hostname, "$title, $myname!"
+It is $title $Day at $Date
+EOF
+)
 ###############
 # Main        #
 ###############
 
 cat <<EOF
-Welcome to planet $Hostname, "$title, $myname!"
-It is $Date at $DDate
+$(cowsay "$Var")
 EOF
