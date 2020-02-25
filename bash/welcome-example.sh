@@ -19,13 +19,15 @@
 ###############
 Hostname=$(hostname)
 title="Overlord"
-myname="user"
+myname=$(users)
+Date=$(date +%A)
+DDate=$(date +%X)
 
 ###############
 # Main        #
 ###############
+
 cat <<EOF
-
 Welcome to planet $Hostname, "$title, $myname!"
-
+It is $Date at $DDate
 EOF
