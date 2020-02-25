@@ -39,7 +39,7 @@ elif [ $Day = Sunday ];
   then title=Funday
 fi
 
-Var=$(cat <<EOF
+Variable=$(cat <<EOF
 Welcome to planet $Hostname, "$title, $myname!"
 It is $title $Day at $Date
 EOF
@@ -49,5 +49,5 @@ EOF
 ###############
 
 cat <<EOF
-$(cowsay "$Var")
+$(cowsay "$Variable")
 EOF
